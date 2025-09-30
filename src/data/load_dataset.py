@@ -17,7 +17,7 @@ def load_clean_adult_dataset():
     adult_data = fetch_openml(data_id=1590, as_frame=True)  # Adult dataset
     X = adult_data.data
     y = adult_data.target
-
+    
     # Ensure categorical columns are set as 'category' dtype
     for col in X.select_dtypes(include=["object"]).columns:
         X[col] = X[col].astype("category")

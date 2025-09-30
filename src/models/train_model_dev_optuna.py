@@ -13,8 +13,7 @@ import optuna
 
 from src.models.utils.optuna_utils import create_objective, load_class
 from src.models.utils.common import save_experiment, get_project_root
-from data.load_dataset import load_clean_adult_dataset  # Your dataset loader
-
+from data.load_dataset import load_clean_adult_dataset
 # --------------------------------
 # Configuration
 # --------------------------------
