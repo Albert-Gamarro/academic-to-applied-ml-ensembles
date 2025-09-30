@@ -124,9 +124,20 @@ print(f"F1-score:  {f1:.3f}")
 
 
 # --------------------------------
-# 8. Save model
+# 8. Save model and performance tracking
 # --------------------------------
 
 import joblib
+from datetime import datetime
+import json
 
-joblib.dump(model_pipeline, os.path.join(MODEL_DIR, "xgb_model_pipeline_prod.joblib"))
+version = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+model_path = os.path.join(MODEL_DIR, f"xgb_model_pipeline_{version}.joblib")
+joblib.dump(model_pipeline, model_path)
+
+metrics = {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1}
+
+metrics_path = os.path.join(RESULTS_DIR, f"metrics_{version}.json")
+with open(metrics_path, "w") as f:
+    json.dump(metrics, f)
